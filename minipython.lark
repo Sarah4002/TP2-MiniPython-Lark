@@ -1,0 +1,37 @@
+start: (decl | assign | print_stmt | while_stmt | if_stmt)+
+
+// Déclarations
+decl: "int" var_list ";"
+var_list: CNAME ("," CNAME)*
+
+// Instructions
+assign: CNAME "=" expr ";"
+print_stmt: "print" "(" expr ")" ";"
+while_stmt: "while" "(" condition ")" "{" stmt_list "}"
+if_stmt: "if" "(" condition ")" "{" stmt_list "}" ("else" "{" stmt_list "}")?
+
+// Lists d'instructions
+stmt_list: (assign | print_stmt | while_stmt | if_stmt)*
+
+// Expressions
+?expr: term
+    | expr "+" term -> add
+    | expr "-" term -> sub
+
+?term: factor
+    | term "*" factor -> mult
+    | term "/" factor -> div
+
+?factor: NUMBER -> number
+    | CNAME -> variable
+    | "(" expr ")"
+
+// Conditions
+condition: expr COMP_OP expr
+COMP_OP: "<" | ">" | "==" | "!=" | "<=" | ">="
+
+// Tokens
+%import common.CNAME
+%import common.NUMBER
+%import common.WS
+%ignore WS

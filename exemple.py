@@ -1,0 +1,4 @@
+
+int x,y; # L-attribu : le type "int" descend vers x et y
+y = x + 2; # S-attribu : la valeur de x + 2 est calcul e etremonte pour affecter y
+print(y); # S-attribu : la valeur de y est calcul e pour l’affichage

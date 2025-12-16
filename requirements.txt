@@ -1,0 +1,14 @@
+# Requirements for MiniPython Lark Parser
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+lark-parser>=1.1.0        # Parser generator
+
+# Visualization (optional but recommended)
+graphviz>=0.20.0          # For AST visualization
+
+# Development dependencies (optional)
+pytest>=7.0.0             # For running tests
+pytest-cov>=4.0.0         # For code coverage
+black>=23.0.0             # For code formatting
+flake8>=6.0.0             # For code linting
